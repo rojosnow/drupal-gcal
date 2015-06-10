@@ -26,7 +26,7 @@ function gcal_help($path, $arg) {
  * Implements hook_libraries_info_alter().
  */
 function gcal_libraries_info_alter(&$libraries) {
-  $libraries['google-api-php-client']['files']['php'][] = 'src/contrib/Google_CalendarService.php';
+  $libraries['google-api-php-client']['files']['php'][] = 'src/Google/Service/Calendar.php';
 }
 
 /**
@@ -161,7 +161,7 @@ function gcal_calendar_object($account_id, $by_name = TRUE) {
     drupal_set_message(t("Can't create google client object, account is Invalid"), 'error');
     return FALSE;
   }
-  return new Google_CalendarService($google_client);
+  return new Google_Service_Calendar($google_client);
 }
 
 /**
